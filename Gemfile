@@ -8,3 +8,7 @@ gem 'sinatra-contrib'
 gem 'puma'
 gem 'rackup'
 gem 'irb'
+
+group :development, :test do
+    gem 'rspec-rails'
+end
