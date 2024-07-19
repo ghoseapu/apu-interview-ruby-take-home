@@ -16,9 +16,6 @@ module Vandelay
         result = self.with_connection do |conn|
           conn.exec_params("SELECT * FROM patients WHERE id = $1::integer", [ patient_id ]).to_a[0]
         end
-        # return nil if result.nil?
-
-        # Vandelay::Models::Patient.new(**result)
         return result.nil? ? nil : result
       end
 

@@ -15,7 +15,7 @@ module Vandelay
               patient.to_json
             else
               status 404
-              { error: 'Patient not found' }.to_json
+              { error: "There is no patient found with id #{patient_id}" }.to_json
             end
           rescue StandardError => e
             status 500
@@ -23,7 +23,7 @@ module Vandelay
           end
         end
 
-        # endpoint that retrieves patient record
+        # endpoint that retrieves a single patient record from external
         app.get '/patients/:patient_id/record' do
           patient_id = params[:patient_id]
           begin
@@ -33,14 +33,13 @@ module Vandelay
               patient.to_json
             else
               status 404
-              { error: 'Patient not found' }.to_json
+              { error: "There is no patient found with id #{patient_id}" }.to_json
             end
           rescue StandardError => e
             status 500
             { error: 'Internal server error', message: e.message }.to_json
           end
         end
-        
       end
     end
   end
